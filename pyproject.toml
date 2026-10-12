@@ -1,0 +1,34 @@
+[project]
+name = "vibevoice-asr-server"
+version = "0.1.0"
+description = "FastAPI Server for VibeVoice ASR HF"
+readme = "README.md"
+license = { text = "MIT" }
+requires-python = ">=3.10"
+dependencies = [
+    "fastapi",
+    "uvicorn[standard]",
+    "python-multipart",
+    "transformers",
+    "accelerate",
+    "torch",
+    "torchaudio",
+    # "flash-attn",
+    "bitsandbytes",
+    "librosa",
+    "soundfile",
+    "pytest"
+]
+
+[[tool.uv.index]]
+name = "pytorch-cu128"
+url = "https://download.pytorch.org/whl/cu128"
+explicit = true
+
+[tool.uv.sources]
+torch = { index = "pytorch-cu128" }
+torchaudio = { index = "pytorch-cu128" }
+torchvision = { index = "pytorch-cu128" }
+
+[tool.pytest.ini_options]
+pythonpath = ["."]
